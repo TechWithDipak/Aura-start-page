@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Background sky gradient -->
+    <linearGradient id="abstract-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a0e4e" />
+      <stop offset="50%" stop-color="#0b1736" />
+      <stop offset="100%" stop-color="#002d40" />
+    </linearGradient>
+
+    <!-- Glowing ribbon gradients -->
+    <linearGradient id="ribbon-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe259" />
+      <stop offset="100%" stop-color="#ffa751" />
+    </linearGradient>
+    
+    <linearGradient id="ribbon-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f857a6" />
+      <stop offset="100%" stop-color="#ff5858" />
+    </linearGradient>
+
+    <linearGradient id="ribbon-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00c6ff" />
+      <stop offset="100%" stop-color="#0072ff" />
+    </linearGradient>
+
+    <linearGradient id="ribbon-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9d50bb" />
+      <stop offset="100%" stop-color="#6e48aa" />
+    </linearGradient>
+
+    <!-- Shadow filter for ribbon depth -->
+    <filter id="ribbon-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="15" stdDeviation="25" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#abstract-bg)" />
+
+  <!-- Smooth overlapping waves / ribbons -->
+  
+  <!-- Ribbon 1 (Purple - Bottom) -->
+  <path d="M-100 800 C 400 900, 800 500, 1200 700 C 1600 900, 1800 600, 2020 700 L 2020 1080 L -100 1080 Z" fill="url(#ribbon-purple)" filter="url(#ribbon-shadow)" opacity="0.8" />
+
+  <!-- Ribbon 2 (Blue - Mid Back) -->
+  <path d="M-100 650 C 300 500, 700 800, 1100 600 C 1500 400, 1700 700, 2020 550 L 2020 1080 L -100 1080 Z" fill="url(#ribbon-blue)" filter="url(#ribbon-shadow)" opacity="0.85" />
+
+  <!-- Ribbon 3 (Pink - Mid Front) -->
+  <path d="M-100 500 C 250 700, 650 400, 1050 650 C 1450 900, 1650 500, 2020 600 L 2020 1080 L -100 1080 Z" fill="url(#ribbon-pink)" filter="url(#ribbon-shadow)" />
+
+  <!-- Ribbon 4 (Gold - Front) -->
+  <path d="M-100 350 C 200 200, 600 600, 1000 350 C 1400 100, 1600 500, 2020 400 L 2020 1080 L -100 1080 Z" fill="url(#ribbon-gold)" filter="url(#ribbon-shadow)" />
+
+  <!-- Accent Highlight circles (Sonoma sphere style) -->
+  <circle cx="1600" cy="200" r="120" fill="#ffa751" opacity="0.15" filter="url(#ribbon-shadow)" />
+  <circle cx="200" cy="900" r="180" fill="#00c6ff" opacity="0.1" filter="url(#ribbon-shadow)" />
+</svg>

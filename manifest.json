@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Safari Start - Premium Personal Dashboard",
+  "version": "1.0.0",
+  "description": "A premium Safari-inspired personal dashboard replacing your new tab page with Clock, Search, Bookmarks, Notes, Reminders, and Custom Wallpapers.",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "bookmarks",
+    "storage"
+  ],
+  "action": {
+    "default_title": "Safari Start"
+  }
+}

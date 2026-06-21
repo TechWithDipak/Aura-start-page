@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Heavy blur filter to merge shapes into mesh gradient -->
+    <filter id="mesh-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="150" />
+    </filter>
+  </defs>
+
+  <!-- Base gradient fill -->
+  <rect width="1920" height="1080" fill="#2d142c" />
+
+  <!-- Layered glowing color blobs -->
+  <g filter="url(#mesh-blur)" opacity="0.85">
+    <!-- Top Left Peach Blob -->
+    <circle cx="300" cy="200" r="450" fill="#ee4540" />
+
+    <!-- Bottom Left Deep Violet Blob -->
+    <circle cx="400" cy="800" r="500" fill="#801336" />
+
+    <!-- Center Yellow Accent -->
+    <circle cx="960" cy="540" r="350" fill="#ffb400" opacity="0.9" />
+
+    <!-- Top Right Fuchsia Blob -->
+    <circle cx="1600" cy="300" r="500" fill="#c72c41" />
+
+    <!-- Bottom Right Electric Blue Accent -->
+    <circle cx="1500" cy="900" r="400" fill="#512b58" />
+
+    <!-- Additional soft pastel flow in background -->
+    <path d="M 600 300 Q 1000 100 1400 400 T 800 900 Z" fill="#ff7a00" opacity="0.6" />
+  </g>
+</svg>

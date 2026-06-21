@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4c2a72" />
+      <stop offset="40%" stop-color="#8c3b7a" />
+      <stop offset="70%" stop-color="#d36473" />
+      <stop offset="90%" stop-color="#f5a072" />
+      <stop offset="100%" stop-color="#ffbf75" />
+    </linearGradient>
+    <radialGradient id="sun-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8eb" stop-opacity="1" />
+      <stop offset="30%" stop-color="#ffd599" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#ffd599" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="mountain-1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ca5f78" />
+      <stop offset="100%" stop-color="#80356c" />
+    </linearGradient>
+    <linearGradient id="mountain-2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#883670" />
+      <stop offset="100%" stop-color="#4a2157" />
+    </linearGradient>
+    <linearGradient id="mountain-3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#492058" />
+      <stop offset="100%" stop-color="#24123c" />
+    </linearGradient>
+    <linearGradient id="mountain-4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#25123d" />
+      <stop offset="100%" stop-color="#0f0720" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky)" />
+  
+  <!-- Sun & Glow -->
+  <circle cx="960" cy="550" r="450" fill="url(#sun-glow)" opacity="0.6" />
+  <circle cx="960" cy="550" r="220" fill="#fffaf0" opacity="0.9" />
+
+  <!-- Mountain Range 1 (Back) -->
+  <path d="M-100 1080 L-100 680 Q150 560 400 640 T900 580 Q1200 480 1500 600 T2020 540 L2020 1080 Z" fill="url(#mountain-1)" opacity="0.85" />
+
+  <!-- Mountain Range 2 -->
+  <path d="M-100 1080 L-100 740 Q250 680 500 750 T1100 690 Q1400 580 1700 720 T2020 660 L2020 1080 Z" fill="url(#mountain-2)" opacity="0.9" />
+
+  <!-- Mountain Range 3 -->
+  <path d="M-100 1080 L-100 810 Q350 780 650 830 T1300 760 Q1600 700 1850 820 T2020 780 L2020 1080 Z" fill="url(#mountain-3)" />
+
+  <!-- Mountain Range 4 (Front) -->
+  <path d="M-100 1080 L-100 900 Q400 860 800 920 T1600 870 T2020 890 L2020 1080 Z" fill="url(#mountain-4)" />
+</svg>

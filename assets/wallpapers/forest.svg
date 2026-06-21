@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Background fog gradient -->
+    <linearGradient id="fog-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b8ccd1" />
+      <stop offset="50%" stop-color="#cfdedf" />
+      <stop offset="100%" stop-color="#e3ecf0" />
+    </linearGradient>
+
+    <!-- Tree silhouette base path -->
+    <g id="tree">
+      <path d="M 0 -80 L 15 -50 L 5 -50 L 22 -20 L 8 -20 L 30 15 L -30 15 L -8 -20 L -22 -20 L -5 -50 L -15 -50 Z" />
+      <rect x="-4" y="15" width="8" height="15" />
+    </g>
+    
+    <!-- Gradients for different layers of trees (mimicking fog depth) -->
+    <linearGradient id="layer-back" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#93a8ab" />
+      <stop offset="100%" stop-color="#cfdedf" />
+    </linearGradient>
+    <linearGradient id="layer-mid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#677e82" />
+      <stop offset="100%" stop-color="#93a8ab" />
+    </linearGradient>
+    <linearGradient id="layer-front" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b5256" />
+      <stop offset="100%" stop-color="#556e72" />
+    </linearGradient>
+    <linearGradient id="layer-closest" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1c3033" />
+      <stop offset="100%" stop-color="#2a3f42" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky & Fog Background -->
+  <rect width="1920" height="1080" fill="url(#fog-bg)" />
+
+  <!-- Back Tree Layer (Distant, high opacity fog, small scale) -->
+  <g fill="url(#layer-back)" opacity="0.6">
+    <use href="#tree" x="100" y="650" transform="scale(1.2)" />
+    <use href="#tree" x="220" y="660" transform="scale(1.1)" />
+    <use href="#tree" x="350" y="640" transform="scale(1.3)" />
+    <use href="#tree" x="480" y="670" transform="scale(1)" />
+    <use href="#tree" x="600" y="650" transform="scale(1.2)" />
+    <use href="#tree" x="720" y="680" transform="scale(1.1)" />
+    <use href="#tree" x="850" y="640" transform="scale(1.3)" />
+    <use href="#tree" x="980" y="670" transform="scale(1.2)" />
+    <use href="#tree" x="1100" y="650" transform="scale(1)" />
+    <use href="#tree" x="1220" y="660" transform="scale(1.2)" />
+    <use href="#tree" x="1350" y="640" transform="scale(1.3)" />
+    <use href="#tree" x="1480" y="670" transform="scale(1.1)" />
+    <use href="#tree" x="1600" y="650" transform="scale(1.2)" />
+    <use href="#tree" x="1720" y="680" transform="scale(1.1)" />
+    <use href="#tree" x="1850" y="640" transform="scale(1.3)" />
+  </g>
+
+  <!-- Soft Fog Layer 1 -->
+  <rect x="0" y="630" width="1920" height="80" fill="#cfdedf" opacity="0.4" />
+
+  <!-- Mid Tree Layer -->
+  <g fill="url(#layer-mid)" opacity="0.8">
+    <use href="#tree" x="50" y="750" transform="scale(1.8)" />
+    <use href="#tree" x="200" y="760" transform="scale(1.6)" />
+    <use href="#tree" x="380" y="740" transform="scale(1.9)" />
+    <use href="#tree" x="520" y="770" transform="scale(1.7)" />
+    <use href="#tree" x="700" y="750" transform="scale(1.8)" />
+    <use href="#tree" x="880" y="760" transform="scale(1.6)" />
+    <use href="#tree" x="1050" y="740" transform="scale(1.9)" />
+    <use href="#tree" x="1200" y="770" transform="scale(1.7)" />
+    <use href="#tree" x="1380" y="750" transform="scale(1.8)" />
+    <use href="#tree" x="1550" y="760" transform="scale(1.6)" />
+    <use href="#tree" x="1700" y="740" transform="scale(1.9)" />
+    <use href="#tree" x="1880" y="770" transform="scale(1.7)" />
+  </g>
+
+  <!-- Soft Fog Layer 2 -->
+  <rect x="0" y="730" width="1920" height="100" fill="#cfdedf" opacity="0.3" />
+
+  <!-- Front Tree Layer -->
+  <g fill="url(#layer-front)">
+    <use href="#tree" x="120" y="860" transform="scale(2.5)" />
+    <use href="#tree" x="300" y="880" transform="scale(2.3)" />
+    <use href="#tree" x="550" y="850" transform="scale(2.7)" />
+    <use href="#tree" x="780" y="890" transform="scale(2.4)" />
+    <use href="#tree" x="1000" y="860" transform="scale(2.6)" />
+    <use href="#tree" x="1250" y="880" transform="scale(2.3)" />
+    <use href="#tree" x="1480" y="850" transform="scale(2.7)" />
+    <use href="#tree" x="1750" y="870" transform="scale(2.5)" />
+  </g>
+
+  <!-- Closest Layer (Detailed silhouettes right in front) -->
+  <g fill="url(#layer-closest)">
+    <use href="#tree" x="-20" y="980" transform="scale(3.6)" />
+    <use href="#tree" x="220" y="1000" transform="scale(3.2)" />
+    <use href="#tree" x="480" y="990" transform="scale(3.5)" />
+    <use href="#tree" x="720" y="1010" transform="scale(3.3)" />
+    <use href="#tree" x="960" y="980" transform="scale(3.7)" />
+    <use href="#tree" x="1200" y="1000" transform="scale(3.4)" />
+    <use href="#tree" x="1450" y="990" transform="scale(3.5)" />
+    <use href="#tree" x="1700" y="1010" transform="scale(3.3)" />
+    <use href="#tree" x="1940" y="980" transform="scale(3.6)" />
+  </g>
+
+  <!-- Solid ground base -->
+  <rect x="0" y="995" width="1920" height="90" fill="#1c3033" />
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky-ocean" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b0e0e6" />
+      <stop offset="40%" stop-color="#e0f6f8" />
+      <stop offset="100%" stop-color="#ffffff" />
+    </linearGradient>
+    <linearGradient id="wave-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00a8b5" />
+      <stop offset="100%" stop-color="#007791" />
+    </linearGradient>
+    <linearGradient id="wave-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#008fa2" />
+      <stop offset="100%" stop-color="#005d73" />
+    </linearGradient>
+    <linearGradient id="wave-3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00748e" />
+      <stop offset="100%" stop-color="#004356" />
+    </linearGradient>
+    <linearGradient id="wave-4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#005a76" />
+      <stop offset="100%" stop-color="#002b3c" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky-ocean)" />
+  
+  <!-- Light Ray Glow -->
+  <path d="M 500 0 L 1500 0 L 1920 1080 L 0 1080 Z" fill="white" opacity="0.05" />
+  
+  <!-- Wave 1 (Back) -->
+  <path d="M0 650 Q 300 580 600 680 T 1200 620 T 1800 660 Q 1860 670 1920 660 L 1920 1080 L 0 1080 Z" fill="url(#wave-1)" opacity="0.4" />
+  
+  <!-- Wave 2 -->
+  <path d="M0 720 Q 400 790 800 710 T 1600 740 Q 1760 760 1920 720 L 1920 1080 L 0 1080 Z" fill="url(#wave-2)" opacity="0.6" />
+  
+  <!-- Wave 3 -->
+  <path d="M0 810 Q 300 760 700 840 T 1400 800 Q 1660 780 1920 830 L 1920 1080 L 0 1080 Z" fill="url(#wave-3)" opacity="0.8" />
+  
+  <!-- Wave 4 (Front) -->
+  <path d="M0 900 Q 480 960 960 900 T 1920 920 L 1920 1080 L 0 1080 Z" fill="url(#wave-4)" />
+</svg>
