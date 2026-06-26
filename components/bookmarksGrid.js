@@ -34,7 +34,7 @@ export const bookmarksGridComponent = {
 
     try {
       const children = await bookmarksUtil.getFolderChildren(currentFolderId);
-      
+
       // Update breadcrumbs navigation
       await this.renderBreadcrumbs();
 
@@ -53,17 +53,17 @@ export const bookmarksGridComponent = {
         if (node.url) {
           // Leaf node (bookmark)
           item.href = node.url;
-          
+
           let domain = '';
           try {
             domain = new URL(node.url).hostname;
           } catch (e) {
             domain = '';
           }
-          
+
           // Google's API fetches high-res favicons securely (up to 256px)
           const favicon = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=256` : '';
-          
+
           item.innerHTML = `
             <div class="favourite-icon-wrapper">
               <img class="favourite-favicon" src="${favicon}" alt="${node.title}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%222%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22></circle><line x1=%222%22 y1=%2212%22 x2=%2222%22 y2=%2212%22></line></svg>'">

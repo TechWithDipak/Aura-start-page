@@ -74,7 +74,7 @@ export const shortcutsComponent = {
       card.draggable = true;
 
       const domain = this.getDomain(sc.url);
-      
+
       let bgStyle = brandStyles[domain] ? `background: ${brandStyles[domain].bg};` : `background: ${fallbackGradients[index % fallbackGradients.length]};`;
       let textColor = brandStyles[domain] ? brandStyles[domain].color : '#fff';
       const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=256` : '';
@@ -113,7 +113,7 @@ export const shortcutsComponent = {
       const actionsDiv = card.querySelector('.suggestion-actions');
       card.addEventListener('mouseenter', () => actionsDiv.style.opacity = '1');
       card.addEventListener('mouseleave', () => actionsDiv.style.opacity = '0');
-      
+
       const editBtn = card.querySelector('.edit-suggestion-btn');
       editBtn.addEventListener('click', (e) => {
         e.preventDefault(); // Prevent navigating
@@ -125,7 +125,7 @@ export const shortcutsComponent = {
       deleteBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        if(confirm(`Remove ${sc.name} from suggestions?`)) {
+        if (confirm(`Remove ${sc.name} from suggestions?`)) {
           this.shortcuts = this.shortcuts.filter(s => s.id !== sc.id);
           await this.saveShortcuts();
           this.renderShortcuts();
@@ -178,14 +178,14 @@ export const shortcutsComponent = {
   async handleDrop(e, targetIndex) {
     e.stopPropagation();
     e.currentTarget.classList.remove('drag-over');
-    
+
     if (this.draggedIndex === null || this.draggedIndex === targetIndex) return;
 
     // Swap items
     const draggedItem = this.shortcuts[this.draggedIndex];
     this.shortcuts.splice(this.draggedIndex, 1);
     this.shortcuts.splice(targetIndex, 0, draggedItem);
-    
+
     await this.saveShortcuts();
     this.renderShortcuts();
   },
@@ -204,10 +204,10 @@ export const shortcutsComponent = {
     this.nameInput = document.getElementById('suggestion-name');
     this.urlInput = document.getElementById('suggestion-url');
     this.deleteBtn = document.getElementById('suggestion-delete-btn');
-    
+
     document.getElementById('suggestion-modal-close').addEventListener('click', () => this.closeModal());
     document.getElementById('suggestion-cancel-btn').addEventListener('click', () => this.closeModal());
-    
+
     this.modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       await this.saveSuggestion();
@@ -220,7 +220,7 @@ export const shortcutsComponent = {
 
   openModal(suggestion = null) {
     document.getElementById('suggestion-modal-title').textContent = suggestion ? 'Edit Suggestion' : 'Add Suggestion';
-    
+
     if (suggestion) {
       this.idInput.value = suggestion.id;
       this.nameInput.value = suggestion.name;
@@ -231,7 +231,7 @@ export const shortcutsComponent = {
       this.idInput.value = '';
       this.deleteBtn.style.display = 'none';
     }
-    
+
     this.modalOverlay.style.display = 'flex';
   },
 
@@ -244,7 +244,7 @@ export const shortcutsComponent = {
     const id = this.idInput.value;
     const name = this.nameInput.value.trim();
     let url = this.urlInput.value.trim();
-    
+
     if (!/^https?:\/\//i.test(url)) {
       url = 'https://' + url;
     }
