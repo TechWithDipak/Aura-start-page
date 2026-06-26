@@ -1,6 +1,6 @@
 /**
  * Safari Bookmark Grid Component
- * Manages rendering bookmark hierarchy, navigation stacks, favicons, and collapse state.
+ * Manages rendering bookmark hierarchy, navigation stacks, favicons.
  */
 
 import { bookmarksUtil } from '../utils/bookmarks.js';
@@ -18,51 +18,8 @@ export const bookmarksGridComponent = {
     const savedStack = await storage.get('bookmarksNavStack', [this.rootFolderId]);
     this.navigationStack = savedStack;
 
-    // 2. Setup widget collapse state listener
-    await this.initCollapseState();
-
-    // 3. Load active bookmarks grid
+    // 2. Load active bookmarks grid
     this.render();
-
-    // 4. Listeners
-    const toggleBtn = document.getElementById('toggle-bookmarks-btn');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => this.toggleCollapse());
-    }
-  },
-
-  /**
-   * Initialize and apply saved widget collapse settings
-   */
-  async initCollapseState() {
-    const isCollapsed = await storage.get('bookmarksWidgetCollapsed', false);
-    const card = document.getElementById('widget-bookmarks');
-    if (card) {
-      if (isCollapsed) {
-        card.classList.add('collapsed-state');
-      } else {
-        card.classList.remove('collapsed-state');
-      }
-    }
-  },
-
-  /**
-   * Toggle collapse state of the bookmarks widget
-   */
-  async toggleCollapse() {
-    const card = document.getElementById('widget-bookmarks');
-    if (!card) return;
-
-    const currentlyCollapsed = card.classList.contains('collapsed-state');
-    const targetState = !currentlyCollapsed;
-
-    if (targetState) {
-      card.classList.add('collapsed-state');
-    } else {
-      card.classList.remove('collapsed-state');
-    }
-
-    await storage.set('bookmarksWidgetCollapsed', targetState);
   },
 
   /**
@@ -84,36 +41,45 @@ export const bookmarksGridComponent = {
       grid.innerHTML = '';
 
       if (children.length === 0) {
-        grid.innerHTML = '<div class="reminders-empty">This bookmark folder is empty</div>';
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; opacity: 0.7;">This folder is empty</div>';
         return;
       }
 
       children.forEach(node => {
         const item = document.createElement('a');
-        item.className = 'bookmark-card animation-scale';
+        item.className = 'favourite-item';
         item.setAttribute('data-id', node.id);
 
         if (node.url) {
           // Leaf node (bookmark)
           item.href = node.url;
-          const favicon = bookmarksUtil.getFaviconUrl(node.url);
+          
+          let domain = '';
+          try {
+            domain = new URL(node.url).hostname;
+          } catch (e) {
+            domain = '';
+          }
+          
+          // icon.horse fetches large apple-touch-icons perfectly for the iOS look
+          const favicon = domain ? `https://icon.horse/icon/${domain}` : '';
           
           item.innerHTML = `
-            <div class="card-icon-container">
-              <img class="bookmark-favicon" src="${favicon}" alt="${node.title}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23007aff%22 stroke-width=%222%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22></circle><line x1=%222%22 y1=%2212%22 x2=%2222%22 y2=%2212%22></line><path d=%22M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z%22></path></svg>'">
+            <div class="favourite-icon-wrapper">
+              <img class="favourite-favicon" src="${favicon}" alt="${node.title}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%222%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22></circle><line x1=%222%22 y1=%2212%22 x2=%2222%22 y2=%2212%22></line></svg>'">
             </div>
-            <span class="bookmark-title" title="${node.title}">${node.title}</span>
+            <span class="favourite-title" title="${node.title}">${node.title}</span>
           `;
         } else {
           // Folder node
           item.href = '#';
           item.innerHTML = `
-            <div class="card-icon-container">
-              <svg class="folder-icon-svg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <div class="favourite-icon-wrapper">
+              <svg style="width: 32px; height: 32px; color: var(--text-primary);" viewBox="0 0 24 24" fill="currentColor" stroke="none">
                 <path d="M20 18H4V8h16v10zm-3-12H9L7 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/>
               </svg>
             </div>
-            <span class="bookmark-title" title="${node.title}">${node.title}</span>
+            <span class="favourite-title" title="${node.title}">${node.title}</span>
           `;
 
           // Handle click to expand folder
@@ -126,13 +92,12 @@ export const bookmarksGridComponent = {
         grid.appendChild(item);
       });
     } catch (error) {
-      grid.innerHTML = '<div class="reminders-empty">Error reading bookmarks</div>';
+      grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center;">Error reading bookmarks</div>';
     }
   },
 
   /**
    * Push new folder ID to stack and navigate
-   * @param {string} folderId 
    */
   async pushFolder(folderId) {
     this.navigationStack.push(folderId);
@@ -173,38 +138,16 @@ export const bookmarksGridComponent = {
     }
 
     nav.style.display = 'flex';
+    nav.style.gap = '8px';
+    nav.style.marginBottom = '12px';
+    nav.style.fontSize = '0.9rem';
+    nav.style.opacity = '0.8';
     nav.innerHTML = '';
 
-    // Render "Back" arrow
     const backBtn = document.createElement('button');
-    backBtn.className = 'breadcrumb-item';
-    backBtn.innerHTML = `
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 12px; height: 12px; margin-right: 4px;">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
-      </svg>
-      Back
-    `;
+    backBtn.textContent = '← Back';
+    backBtn.style.cursor = 'pointer';
     backBtn.addEventListener('click', () => this.popFolder());
     nav.appendChild(backBtn);
-
-    // Build breadcrumbs path
-    for (let i = 0; i < this.navigationStack.length; i++) {
-      const folderId = this.navigationStack[i];
-      const node = await bookmarksUtil.getNode(folderId);
-      
-      const breadcrumb = document.createElement('button');
-      breadcrumb.className = 'breadcrumb-item';
-      breadcrumb.textContent = node ? node.title : 'Folder';
-      
-      // Click a folder in path to jump to that depth
-      breadcrumb.addEventListener('click', async () => {
-        this.navigationStack = this.navigationStack.slice(0, i + 1);
-        await storage.set('bookmarksNavStack', this.navigationStack);
-        this.render();
-      });
-
-      nav.appendChild(breadcrumb);
-    }
   }
 };

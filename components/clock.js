@@ -9,6 +9,7 @@ export const clockComponent = {
   clockInterval: null,
   is24Hour: false,
   userName: 'Dipak', // Defaulting to the user name from request
+  showGreetingName: false,
 
   /**
    * Initialize clock updates and settings
@@ -16,6 +17,7 @@ export const clockComponent = {
   async init() {
     this.is24Hour = await storage.get('clockFormat24', false);
     this.userName = await storage.get('userName', 'Dipak');
+    this.showGreetingName = await storage.get('showGreetingName', false);
     
     this.updateClock();
     this.clockInterval = setInterval(() => this.updateClock(), 1000);
@@ -38,6 +40,14 @@ export const clockComponent = {
   async setClockFormat(value) {
     this.is24Hour = value;
     await storage.set('clockFormat24', value);
+    this.updateClock();
+  },
+
+  /**
+   * Reload greeting preference and update display
+   */
+  async updateGreeting() {
+    this.showGreetingName = await storage.get('showGreetingName', false);
     this.updateClock();
   },
 
@@ -84,13 +94,21 @@ export const clockComponent = {
       const currentHour = now.getHours();
       let greeting = 'Good Evening';
 
-      if (currentHour < 12) {
+      if (currentHour >= 0 && currentHour < 5) {
+        greeting = 'Good Night';
+      } else if (currentHour >= 5 && currentHour < 12) {
         greeting = 'Good Morning';
-      } else if (currentHour < 17) {
+      } else if (currentHour >= 12 && currentHour < 18) {
         greeting = 'Good Afternoon';
+      } else {
+        greeting = 'Good Evening';
       }
 
-      greetingText.textContent = `${greeting}, ${this.userName}`;
+      if (this.showGreetingName) {
+        greetingText.textContent = `${greeting}, ${this.userName}`;
+      } else {
+        greetingText.textContent = greeting;
+      }
     }
   },
 
