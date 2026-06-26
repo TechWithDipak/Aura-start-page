@@ -77,7 +77,7 @@ export const shortcutsComponent = {
       
       let bgStyle = brandStyles[domain] ? `background: ${brandStyles[domain].bg};` : `background: ${fallbackGradients[index % fallbackGradients.length]};`;
       let textColor = brandStyles[domain] ? brandStyles[domain].color : '#fff';
-      const faviconUrl = domain ? `https://icon.horse/icon/${domain}` : '';
+      const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=256` : '';
 
       card.setAttribute('style', `${bgStyle} color: ${textColor};`);
 

@@ -61,8 +61,8 @@ export const bookmarksGridComponent = {
             domain = '';
           }
           
-          // icon.horse fetches large apple-touch-icons perfectly for the iOS look
-          const favicon = domain ? `https://icon.horse/icon/${domain}` : '';
+          // Google's API fetches high-res favicons securely (up to 256px)
+          const favicon = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=256` : '';
           
           item.innerHTML = `
             <div class="favourite-icon-wrapper">
