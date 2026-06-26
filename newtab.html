@@ -18,41 +18,46 @@
   <!-- Main Grid Workspace -->
   <div class="dashboard-wrapper">
     
-    <!-- Top Header: Greeting, Clock & Date -->
-    <header class="dashboard-header fade-in" id="widget-clock-section">
-      <div class="clock-container">
-        <h1 id="clock-text" class="clock-display">00:00</h1>
-        <div class="clock-details">
-          <span id="clock-ampm" class="clock-ampm">AM</span>
-          <p id="date-text" class="date-display">Monday, January 1</p>
+    <!-- Top Row Layout: Search (Left) and Clock (Right) -->
+    <div class="top-row-layout">
+      
+      <!-- Search Section -->
+      <section class="search-section fade-in-delay-1" id="widget-search-section">
+        <div class="search-container">
+          <form id="search-form" class="search-form-wrapper">
+            <div class="search-icon-wrapper">
+              <svg class="icon search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <input type="text" id="search-input" placeholder="Search or enter website name" autocomplete="off" spellcheck="false">
+          </form>
+          <!-- Search History Dropdown -->
+          <div id="search-history-dropdown" class="search-history-dropdown" style="display: none;">
+            <ul id="search-history-list" class="search-history-list"></ul>
+            <div class="search-history-footer">
+              <button id="search-history-clear-btn" class="clear-history-btn" type="button">Clear History</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="greeting-container">
-        <h2 id="greeting-text" class="greeting-title">Good Morning</h2>
-      </div>
-    </header>
+      </section>
 
-    <!-- Search Section -->
-    <section class="search-section fade-in-delay-1" id="widget-search-section">
-      <div class="search-container">
-        <form id="search-form" class="search-form-wrapper">
-          <div class="search-icon-wrapper">
-            <svg class="icon search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </div>
-          <input type="text" id="search-input" placeholder="Search or enter website name" autocomplete="off" spellcheck="false">
-        </form>
-        <!-- Search History Dropdown -->
-        <div id="search-history-dropdown" class="search-history-dropdown" style="display: none;">
-          <ul id="search-history-list" class="search-history-list"></ul>
-          <div class="search-history-footer">
-            <button id="search-history-clear-btn" class="clear-history-btn" type="button">Clear History</button>
+      <!-- Top Header: Greeting, Clock & Date -->
+      <header class="dashboard-header fade-in" id="widget-clock-section">
+        <div class="clock-container">
+          <h1 id="clock-text" class="clock-display">00:00</h1>
+          <div class="clock-details">
+            <span id="clock-ampm" class="clock-ampm">AM</span>
+            <p id="date-text" class="date-display">Monday, January 1</p>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="greeting-container">
+          <h2 id="greeting-text" class="greeting-title">Good Morning</h2>
+        </div>
+      </header>
+
+    </div>
 
     <!-- Dashboard Content Widgets Grid -->
     <main class="dashboard-main fade-in-delay-2">

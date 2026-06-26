@@ -141,14 +141,22 @@ a {
 }
 
 /* --- 5. Header & Search --- */
+.top-row-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 2vh;
+  gap: 24px;
+}
+
 .dashboard-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 2vh;
-  gap: 8px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-align: right;
+  gap: 4px;
 }
 
 .clock-container {
@@ -193,8 +201,10 @@ a {
 /* Search Bar */
 .search-section {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
+  max-width: 500px;
+  margin-top: 8px;
 }
 
 .search-container {
@@ -699,6 +709,19 @@ a {
 @media (max-width: 800px) {
   .widget-row {
     grid-template-columns: 1fr;
+  }
+  .top-row-layout {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 20px;
+  }
+  .dashboard-header {
+    align-items: center;
+    text-align: center;
+  }
+  .search-section {
+    justify-content: center;
+    max-width: 100%;
   }
 }
 
