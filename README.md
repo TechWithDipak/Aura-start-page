@@ -31,12 +31,12 @@ Since this is an unpacked browser extension, you can easily load it into any Chr
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/TechWithDipak/Modern-UI-UX-homepage.git
+    git clone https://github.com/TechWithDipak/Aura-start-page.git
     ```
 2.  **Open Extension Settings**:
     *   *Chrome/Edge/Brave*: Type `chrome://extensions/` (or `edge://extensions/`) in your URL bar and hit Enter.
 3.  **Enable Developer Mode**: Toggle the "Developer mode" switch in the top right corner.
-4.  **Load the Extension**: Click the **"Load unpacked"** button and select the cloned repository folder (`Modern-UI-UX-homepage`).
+4.  **Load the Extension**: Click the **"Load unpacked"** button and select the cloned repository folder (`Aura-start-page`).
 5.  **Open a New Tab**: Open a new tab (`Ctrl+T` or `Cmd+T`) and enjoy your new premium dashboard!
 
 ## 📂 Project Structure
@@ -57,7 +57,7 @@ Since this is an unpacked browser extension, you can easily load it into any Chr
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are always welcome! Feel free to check the [issues page](https://github.com/TechWithDipak/Modern-UI-UX-homepage/issues) if you want to contribute.
+Contributions, issues, and feature requests are always welcome! Feel free to check the [issues page](https://github.com/TechWithDipak/Aura-start-page/issues) if you want to contribute.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
